@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+header {
+    padding: 15px;
+    text-align: center;
+    background: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+#board {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    padding: 12px;
+}
+
+.communication-button {
+    min-height: 120px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: white;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.communication-button:active {
+    transform: scale(0.97);
+}
