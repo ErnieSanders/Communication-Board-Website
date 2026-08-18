@@ -7,14 +7,19 @@ const buttons = [
     "Food",
     "Bathroom",
     "Sleep",
-    "Stop"
+    "Stop",
+    "Want",
+    "Fries"
 ];
 
 const board = document.getElementById("board");
 
 function speak(text) {
-    const utterance = new SpeechSynthesisUtterance(text);
+    //speechSynthesis.cancel(); //Cancel whatever is currently being said to reduce delay between words
 
+    
+    
+    const utterance = new SpeechSynthesisUtterance(text);    
     //Future add -> Ability to change voices
 
     speechSynthesis.speak(utterance);
