@@ -1,59 +1,59 @@
 const buttons = [
     {
         text: "Yes",
-        image: "images/yes.png",
+        image: "Images/yes.png",
     },
     {
         text: "No",
-        image: "images/no.png",
+        image: "Images/no.png",
     },
     {
         text: "Please",
-        image: "images/please.png",
+        image: "Images/please.png",
     },
     {
         text: "Thank you",
-        image: "images/thank you.png",
+        image: "Images/thank you.png",
     },
     {
         text: "More",
-        image: "images/more.png",
+        image: "Images/more.png",
     },
     {
         text: "Stop",
-        image: "images/stop.png",
+        image: "Images/stop.png",
     },
     {
         text: "Bathroom",
-        image: "images/bathroom.png",
+        image: "Images/bathroom.png",
     },
     {
         text: "Hungry",
-        image: "images/hungry.png",
+        image: "Images/hungry.png",
     },
     {
         text: "Thirsty",
-        image: "images/thirsty.png",
+        image: "Images/thirsty.png",
     },
     {
         text: "Pain",
-        image: "images/pain.png",
+        image: "Images/pain.png",
     },
     {
         text: "Water",
-        image: "images/water.png",
+        image: "Images/water.png",
     },
     {
         text: "Oreos",
-        image: "images/oreos.png",
+        image: "Images/oreos.png",
     },
     {
         text: "Rice",
-        image: "images/rice.png",
+        image: "Images/rice.png",
     },
     {
         text: "iPad",
-        image: "images/ipad.png",
+        image: "Images/ipad.png",
     }
 ];
 
