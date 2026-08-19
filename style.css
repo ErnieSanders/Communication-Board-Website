@@ -1,34 +1,82 @@
+/* 
+ * Apply box-sizing: border-box to all elements.
+ * This makes width and height calculations include
+ * padding and borders.
+ */
 * {
     box-sizing: border-box;
 }
 
+
+/*
+ * General page styling
+ */
 body {
+    /* Remove the browser's default margin */
     margin: 0;
+
+    /* Set the default font for the website */
     font-family: Arial, sans-serif;
+
+    /* Light gray background */
     background: #f2f2f2;
 }
 
+
+/*
+ * Header containing the title of the communication board
+ */
 header {
+    /* Add space inside the header */
     padding: 15px;
+
+    /* Center the title horizontally */
     text-align: center;
+
+    /* White background for the header */
     background: white;
 }
 
+
+/*
+ * Communication board title
+ */
 header h1 {
+    /* Remove the default margin around the heading */
     margin: 0;
+
+    /* Set the title font size */
     font-size: 28px;
 }
 
+
+/*
+ * Main communication button grid
+ */
 #board {
+    /* Use CSS Grid to organize the buttons */
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    /*
+     * Create 3 equal-width columns.
+     * Each button will automatically fill its column.
+     */
+    grid-template-columns: repeat(5, 1fr);
 
+    /* Add space between buttons */
     gap: 12px;
 
+    /* Add space between the buttons and the edge of the board */
     padding: 12px;
 }
 
+
+/*
+ * Previous button styling
+ * Kept here for reference in case we want to
+ * return to the simpler button design later.
+ */
+/*
 .communication-button {
     min-height: 120px;
 
@@ -44,7 +92,97 @@ header h1 {
 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+*/
 
+
+/*
+ * Communication button
+ * Each button contains an image and text.
+ */
+.communication-button {
+
+    /*
+     * Set the minimum height of the button.
+     * The button can grow larger if necessary.
+     */
+    min-height: 180px;
+
+    /*
+     * Use Flexbox to control the image and text
+     * inside the button.
+     */
+    display: flex;
+
+    /*
+     * Stack the image and text vertically.
+     */
+    flex-direction: column;
+
+    /*
+     * Center the image and text horizontally.
+     */
+    align-items: center;
+
+    /*
+     * Center the image and text vertically.
+     */
+    justify-content: center;
+
+    /*
+     * Add 10px of space between the image and text.
+     */
+    gap: 10px;
+
+    /* Remove the default button border */
+    border: none;
+
+    /* Round the corners of the button */
+    border-radius: 5px;
+
+    /* White button background */
+    background: white;
+
+    /*
+     * Set the size of the text displayed
+     * on the communication button.
+     */
+    font-size: 15px;
+
+    /* Make the button text bold */
+    font-weight: bold;
+}
+
+
+/*
+ * Images inside communication buttons
+ */
+.communication-button img {
+
+    /*
+     * Set the image container to 100x100 pixels.
+     */
+    width: 180px;
+    height: 180px;
+
+    /*
+     * Keep the original image aspect ratio
+     * while fitting it inside the 100x100 area.
+     *
+     * This prevents images from being stretched
+     * or distorted.
+     */
+    object-fit: contain;
+}
+
+
+/*
+ * Button behavior when it is pressed.
+ */
 .communication-button:active {
+
+    /*
+     * Slightly shrink the button while it is being
+     * pressed to provide visual feedback.
+     */
     transform: scale(0.97);
 }
