@@ -1,7 +1,7 @@
-/* 
+/*
  * Apply box-sizing: border-box to all elements.
- * This makes width and height calculations include
- * padding and borders.
+ *
+ * Width and height will include padding and borders.
  */
 * {
     box-sizing: border-box;
@@ -9,33 +9,47 @@
 
 
 /*
- * General page styling
+ * Make the page fill the entire screen.
  */
+html,
 body {
-    /* Remove the browser's default margin */
+    width: 100%;
+    height: 100%;
     margin: 0;
 
-    /* Set the default font for the website */
-    font-family: Arial, sans-serif;
+    /*
+     * Prevent horizontal and vertical scrollbars.
+     */
+    overflow: hidden;
 
-    /* Light gray background */
+    font-family: Arial, sans-serif;
     background: #f2f2f2;
 }
 
 
 /*
  * Header containing the title of the communication board
- 
  */
 header {
-    /* Add space inside the header */
+    /*
+     * Add space inside the header.
+     */
     padding: 15px;
 
-    /* Center the title horizontally */
+    /*
+     * Center the title.
+     */
     text-align: center;
 
-    /* White background for the header */
+    /*
+     * White background.
+     */
     background: white;
+
+    /*
+     * Don't allow the header to shrink.
+     */
+    flex-shrink: 0;
 }
 
 
@@ -43,91 +57,174 @@ header {
  * Communication board title
  */
 header h1 {
-    /* Remove the default margin around the heading */
+    /*
+     * Remove default heading margin.
+     */
     margin: 0;
 
-    /* Set the title font size */
+    /*
+     * Title size.
+     */
     font-size: 28px;
 }
 
 
 /*
- * Main communication button grid
+ * Communication board
  */
 #board {
-    /* Use CSS Grid to organize the buttons */
+    /*
+     * Fill all remaining space underneath
+     * the header.
+     */
+    flex: 1;
+
+    /*
+     * IMPORTANT:
+     * Allows the grid to shrink when the screen
+     * is small.
+     */
+    min-height: 0;
+
+    /*
+     * Use CSS Grid.
+     */
     display: grid;
 
     /*
-     * Create 3 equal-width columns.
-     * Each button will automatically fill its column.
+     * ALWAYS 5 COLUMNS.
      */
-    
     grid-template-columns: repeat(5, 1fr);
-    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
 
-    /* Add space between buttons */
+    /*
+     * ALWAYS 3 ROWS.
+     *
+     * Change the 3 if you have a different
+     * number of rows.
+     */
+    grid-template-rows: repeat(3, 1fr);
+
+    /*
+     * Space between buttons.
+     */
     gap: 12px;
 
-    /* Add space between the buttons and the edge of the board */
+    /*
+     * Space around the entire board.
+     */
     padding: 12px;
 }
 
 
 /*
- * Communication button
- * Each button contains an image and text.
+ * Communication buttons
  */
 .communication-button {
     /*
-     * Button height automatically scales based
-     * on the available width.
+     * Allow the button to shrink with the grid.
      */
-    aspect-ratio: 1 / 1;
-
     min-width: 0;
+    min-height: 0;
 
+    /*
+     * Use Flexbox for the image and text.
+     */
     display: flex;
+
+    /*
+     * Put image above text.
+     */
     flex-direction: column;
+
+    /*
+     * Center horizontally.
+     */
     align-items: center;
+
+    /*
+     * Center vertically.
+     */
     justify-content: center;
 
-    gap: 10px;
+    /*
+     * Space between image and text.
+     */
+    gap: 5px;
 
+    /*
+     * Remove default button border.
+     */
     border: none;
+
+    /*
+     * Rounded corners.
+     */
     border-radius: 5px;
+
+    /*
+     * Button background.
+     */
     background: white;
 
+    /*
+     * Text automatically scales with
+     * the screen.
+     *
+     * Minimum: 12px
+     * Preferred: 1.5% of viewport width
+     * Maximum: 20px
+     */
     font-size: clamp(12px, 1.5vw, 20px);
+
+    /*
+     * Bold text.
+     */
     font-weight: bold;
+
+    /*
+     * Don't allow content to escape the button.
+     */
+    overflow: hidden;
 }
 
 
 /*
- * Images inside communication buttons
+ * Images inside buttons
  */
 .communication-button img {
     /*
-     * Image scales with the button.
+     * Image width is based on the button.
      *
-     * It will be between 50px and 180px,
-     * depending on screen size.
+     * The image can use up to 70% of the
+     * button width.
+     *
+     * 180px is the maximum size.
      */
-    width: clamp(50px, 12vw, 180px);
-    height: clamp(50px, 12vw, 180px);
+    width: min(70%, 180px);
 
+    /*
+     * Maintain the original image proportions.
+     */
+    height: auto;
+
+    /*
+     * Prevent the image from becoming too tall.
+     */
+    max-height: 70%;
+
+    /*
+     * Keep the entire image visible.
+     */
     object-fit: contain;
 }
 
 
 /*
- * Button behavior when it is pressed.
+ * Button press animation
  */
 .communication-button:active {
-
     /*
-     * Slightly shrink the button while it is being
-     * pressed to provide visual feedback.
+     * Slightly shrink the button when pressed.
      */
     transform: scale(0.97);
 }
