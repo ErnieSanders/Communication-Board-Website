@@ -20,7 +20,7 @@ body {
     /*
      * Prevent horizontal and vertical scrollbars.
      */
-    overflow: hidden;
+    /* overflow: hidden; */
 
     font-family: Arial, sans-serif;
     background: #f2f2f2;
