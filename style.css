@@ -62,8 +62,8 @@ header h1 {
      * Each button will automatically fill its column.
      */
     
-     /*? grid-template-columns: repeat(5, 1fr); Maybe keep or remove*/
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
+    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
 
     /* Add space between buttons */
     gap: 12px;
@@ -78,55 +78,26 @@ header h1 {
  * Each button contains an image and text.
  */
 .communication-button {
-
     /*
-     * Set the minimum height of the button.
-     * The button can grow larger if necessary.
+     * Button height automatically scales based
+     * on the available width.
      */
-    min-height: 180px;
+    aspect-ratio: 1 / 1;
 
-    /*
-     * Use Flexbox to control the image and text
-     * inside the button.
-     */
+    min-width: 0;
+
     display: flex;
-
-    /*
-     * Stack the image and text vertically.
-     */
     flex-direction: column;
-
-    /*
-     * Center the image and text horizontally.
-     */
     align-items: center;
-
-    /*
-     * Center the image and text vertically.
-     */
     justify-content: center;
 
-    /*
-     * Add 10px of space between the image and text.
-     */
     gap: 10px;
 
-    /* Remove the default button border */
     border: none;
-
-    /* Round the corners of the button */
     border-radius: 5px;
-
-    /* White button background */
     background: white;
 
-    /*
-     * Set the size of the text displayed
-     * on the communication button.
-     */
-    font-size: 15px;
-
-    /* Make the button text bold */
+    font-size: clamp(12px, 1.5vw, 20px);
     font-weight: bold;
 }
 
@@ -135,20 +106,15 @@ header h1 {
  * Images inside communication buttons
  */
 .communication-button img {
-
     /*
-     * Set the image container to 100x100 pixels.
-     */
-    width: 180px;
-    height: 180px;
-
-    /*
-     * Keep the original image aspect ratio
-     * while fitting it inside the 100x100 area.
+     * Image scales with the button.
      *
-     * This prevents images from being stretched
-     * or distorted.
+     * It will be between 50px and 180px,
+     * depending on screen size.
      */
+    width: clamp(50px, 12vw, 180px);
+    height: clamp(50px, 12vw, 180px);
+
     object-fit: contain;
 }
 
