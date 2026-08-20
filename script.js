@@ -48,6 +48,10 @@ const buttons = [
         image: "Images/oreos.png",
     },
     {
+        text: "Oatmeal",
+        image: "Images/oatmeal.png",
+    },
+    {
         text: "Rice",
         image: "Images/rice.png",
     },
