@@ -58,7 +58,7 @@ const buttons = [
     {
         text: "Oatmeal",
         image: "Images/ipad.png",
-    }
+    },
     {
         text: "iPad",
         image: "Images/ipad.png",
