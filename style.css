@@ -1,4 +1,4 @@
-/* 
+/*
  * Apply box-sizing: border-box to all elements.
  * This makes width and height calculations include
  * padding and borders.
@@ -11,15 +11,32 @@
 /*
  * General page styling
  */
+html,
 body {
+    /* Make the page fill the entire screen */
+    width: 100%;
+    height: 100%;
+
     /* Remove the browser's default margin */
     margin: 0;
 
+    /* Prevent the page from creating a scrollbar */
+    overflow: hidden;
+}
+
+body {
     /* Set the default font for the website */
     font-family: Arial, sans-serif;
 
     /* Light gray background */
     background: #f2f2f2;
+
+    /*
+     * Use Flexbox to position the header
+     * and communication board vertically.
+     */
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -35,6 +52,12 @@ header {
 
     /* White background for the header */
     background: white;
+
+    /*
+     * Prevent the header from shrinking
+     * when the screen becomes smaller.
+     */
+    flex-shrink: 0;
 }
 
 
@@ -51,64 +74,129 @@ header h1 {
 
 
 /*
+ * Container surrounding the communication board.
+ *
+ * The board will maintain a 16:9 aspect ratio
+ * while automatically resizing to fit the screen.
+ */
+.board-container {
+    /*
+     * Maintain a 16:9 width-to-height ratio.
+     *
+     * Change this if you want a different ratio.
+     * Examples:
+     *
+     * 4 / 3
+     * 3 / 2
+     * 16 / 9
+     */
+    aspect-ratio: 16 / 9;
+
+    /*
+     * Make the board as large as possible
+     * based on the available width.
+     */
+    width: min(100vw, 177.78dvh);
+
+    /*
+     * Never allow the board to become taller
+     * than the available screen.
+     */
+    max-height: 100%;
+
+    /*
+     * Center the board horizontally.
+     */
+    margin: 0 auto;
+
+    /*
+     * Allow the board to shrink when necessary.
+     */
+    flex-shrink: 1;
+
+    /*
+     * Prevent the board itself from creating
+     * a scrollbar.
+     */
+    overflow: hidden;
+}
+
+
+/*
  * Main communication button grid
  */
 #board {
+    /*
+     * Make the grid fill the entire board container.
+     */
+    width: 100%;
+    height: 100%;
+
     /* Use CSS Grid to organize the buttons */
     display: grid;
 
     /*
-     * Create 3 equal-width columns.
-     * Each button will automatically fill its column.
+     * Create 5 equal-width columns.
+     *
+     * The number of columns stays fixed.
+     * The buttons themselves resize depending
+     * on the size of the screen.
      */
-    
-     /*? grid-template-columns: repeat(5, 1fr); Maybe keep or remove*/
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
+
+    /*
+     * Create 4 equal-height rows.
+     *
+     * Change "4" if you want a different
+     * number of rows.
+     */
+    grid-template-rows: repeat(4, 1fr);
 
     /* Add space between buttons */
     gap: 12px;
 
-    /* Add space between the buttons and the edge of the board */
+    /*
+     * Add space between the buttons and
+     * the edge of the board.
+     */
     padding: 12px;
 }
 
 
 /*
  * Communication button
+ *
  * Each button contains an image and text.
  */
 .communication-button {
+    /*
+     * Allow the button to completely fill
+     * its grid cell.
+     */
+    width: 100%;
+    height: 100%;
 
     /*
-     * Set the minimum height of the button.
-     * The button can grow larger if necessary.
+     * IMPORTANT:
+     * Do not use a fixed min-height here.
+     *
+     * A fixed minimum height could make the
+     * board larger than the available screen.
      */
-    min-height: 180px;
 
-    /*
-     * Use Flexbox to control the image and text
-     * inside the button.
-     */
+    /* Use Flexbox for the image and text */
     display: flex;
 
-    /*
-     * Stack the image and text vertically.
-     */
+    /* Stack the image and text vertically */
     flex-direction: column;
 
-    /*
-     * Center the image and text horizontally.
-     */
+    /* Center the image and text horizontally */
     align-items: center;
 
-    /*
-     * Center the image and text vertically.
-     */
+    /* Center the image and text vertically */
     justify-content: center;
 
-    /*
-     * Add 10px of space between the image and text.
-     */
+    /* Add space between image and text */
     gap: 10px;
 
     /* Remove the default button border */
@@ -121,13 +209,22 @@ header h1 {
     background: white;
 
     /*
-     * Set the size of the text displayed
-     * on the communication button.
+     * Make the text size responsive.
+     *
+     * 15px = minimum
+     * 2vw = scales with screen width
+     * 24px = maximum
      */
-    font-size: 15px;
+    font-size: clamp(15px, 2vw, 24px);
 
     /* Make the button text bold */
     font-weight: bold;
+
+    /*
+     * Prevent the contents from forcing
+     * the button to become larger.
+     */
+    overflow: hidden;
 }
 
 
@@ -135,21 +232,27 @@ header h1 {
  * Images inside communication buttons
  */
 .communication-button img {
-
     /*
-     * Set the image container to 100x100 pixels.
+     * Make the image responsive to the
+     * size of its button.
+     *
+     * The image will never be larger than
+     * 70% of the button's width or height.
      */
-    width: 180px;
-    height: 180px;
+    width: min(70%, 70%);
+
+    height: auto;
 
     /*
      * Keep the original image aspect ratio
-     * while fitting it inside the 100x100 area.
-     *
-     * This prevents images from being stretched
-     * or distorted.
+     * while fitting it inside the available space.
      */
     object-fit: contain;
+
+    /*
+     * Prevent the image from becoming too large.
+     */
+    max-height: 70%;
 }
 
 
@@ -157,10 +260,9 @@ header h1 {
  * Button behavior when it is pressed.
  */
 .communication-button:active {
-
     /*
-     * Slightly shrink the button while it is being
-     * pressed to provide visual feedback.
+     * Slightly shrink the button while it is
+     * being pressed to provide visual feedback.
      */
     transform: scale(0.97);
 }
