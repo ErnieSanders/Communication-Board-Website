@@ -73,6 +73,11 @@ const buttons = [
         text: "iPad",
         image: "Images/ipad.png",
         category: "noun"
+    },
+    {
+        text: "Question?",
+        image: "Images/question.png",
+        category: "importantandnegation"
     }
 ];
 
