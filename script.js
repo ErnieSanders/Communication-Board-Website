@@ -10,6 +10,11 @@ const buttons = [
         category: "importantandnegation"
     },
     {
+        text: "Question?",
+        image: "Images/question.png",
+        category: "importantandnegation"
+    },
+    {
         text: "Please",
         image: "Images/please.png",
         category: "socialandpreposition"
@@ -50,6 +55,11 @@ const buttons = [
         category: "noun"
     },
     {
+        text: "iPad",
+        image: "Images/ipad.png",
+        category: "noun"
+    },
+    {
         text: "Water",
         image: "Images/water.png",
         category: "noun"
@@ -70,14 +80,14 @@ const buttons = [
         category: "noun"
     },
     {
-        text: "iPad",
-        image: "Images/ipad.png",
+        text: "Grapes",
+        image: "Images/grapes.png",
         category: "noun"
     },
     {
-        text: "Question?",
-        image: "Images/question.png",
-        category: "importantandnegation"
+        text: "Cheezits",
+        image: "Images/cheezits.png",
+        category: "noun"
     }
 ];
 
